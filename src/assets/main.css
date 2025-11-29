@@ -1,0 +1,21 @@
+/* @import './base.css'; */
+@import "tailwindcss";
+
+/* Contoh style.css */
+
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Pastikan body nggak kasih margin putih */
+body {
+  margin: 0;
+}
+
+/* Biar app-nya full satu layar, rata kanan–kiri */
+#app {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
