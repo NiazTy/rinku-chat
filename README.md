@@ -1,7 +1,21 @@
+<div align="center" id="trendradar">
+
+<strong>AIMOTO RINKU, SEBUAH AI YANG SANGAT POSITIF</strong>
+
+[![GitHub Stars](https://img.shields.io/github/stars/NiazTy/rinku-chat?style=flat-square&logo=github&color=yellow)](https://github.com/NiazTy/rinku-chat/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/NiazTy/kupas-tuntas?style=flat-square&logo=github&color=blue)](https://github.com/NiazTy/rinku-chat/network/members)
+[![License](https://img.shields.io/badge/license-MIT--3.0-blue.svg?style=flat-square)](LICENSE)
+[![Version](https://img.shields.io/badge/version-v3.4.0-blue.svg)](https://github.com/NiazTy/rinku-chat)
+
+[![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Deployment-4285F4?style=flat-square&logo=github&logoColor=white)](https://rinku-chat.vercel.app)
+
+</div>
+
+---
+
 # 🌿 Rinku Chat
 
-Rinku Chat adalah aplikasi chat berbasis **Vue 3 + TailwindCSS** dengan tampilan personal dan hangat.  
-Frontend ini terhubung langsung dengan backend **Subaru Awa**, sebuah AI Chatbot yang menangani login dan generasi balasan.  
+Rinku Chat adalah aplikasi chat berbasis **Vue 3 + TailwindCSS** dengan tampilan personal dan hangat.
 
 UI dibuat seperti aplikasi chat personal yang lembut—bubble melengkung, avatar karakter Rinku, background grid hijau pastel, dan typing indicator yang hidup.
 
@@ -9,33 +23,18 @@ UI dibuat seperti aplikasi chat personal yang lembut—bubble melengkung, avatar
 
 ## ✨ Fitur Utama
 
-### 🔐 Autentikasi
-- Login dengan endpoint `/auth/login`
-- Validasi username & password
-- Token JWT disimpan di state dan digunakan untuk aksi chat
-
 ### 💬 Sistem Chat Real-Time
 - Bubble chat untuk **Kamu** (user)
 - Bubble chat lengkap avatar untuk **Rinku** (AI)
 - Pesan ditampilkan dengan animasi halus
 
-### 🟢 Typing Indicator
-- Tiga titik animasi yang menandakan Rinku sedang mengetik
-- Muncul otomatis saat request sedang diproses
-
-### 📜 Auto-scroll
-- Selalu scroll ke pesan terbaru setelah pesan masuk/keluar
-- Tidak mengganggu scroll manual di tengah chat
-
-### 📌 Input Tetap di Bawah
-- Kotak input fixed di bagian bawah layar
-- Tetap nyaman dipakai meskipun percakapan sudah panjang
-
 ### 🌈 UI Lembut & Responsive
 - Tampilan grid hijau pastel
 - Bubble chat melengkung
 - Avatar karakter Rinku di sisi kanan
-- Tab menu: **Beranda · Chat · Tentang Rinku**
+
+### 🌟 Rinku yang sudah dipersonalisasi
+- Memiliki jawaban yang sangat manusiawi
 
 ---
 
@@ -44,9 +43,6 @@ UI dibuat seperti aplikasi chat personal yang lembut—bubble melengkung, avatar
 - **Vue 3** (`<script setup>`)
 - **TailwindCSS**
 - **Vite**
-- **lucide-vue-next** (ikon tombol kirim)
-- **Fetch API** (komunikasi backend)
-- **TransitionGroup** (animasi bubble chat)
 
 ---
 
@@ -139,31 +135,13 @@ npm run build
 npm run preview
 ```
 
----
-
-## 🚀 Deploy ke Vercel
-
-1. Push project ke GitHub
-2. Buka Vercel → **New Project**
-3. Import repository
-4. Pilih framework: **Vue**
-5. Tambahkan environment variable:
-
-```
-VITE_API_BASE_URL = https://backend-kamu.vercel.app
-```
-
 6. Deploy 🎉
 
 ---
 
 ## 🖼️ Preview Tampilan
 
-> *(Tambahkan screenshot kamu sendiri)*
-
-```
-public/Rinku-chat-preview.png
-```
+<img src="/public/beranda.png" alt="Beranda" width="80%">
 
 ---
 
@@ -178,15 +156,3 @@ public/Rinku-chat-preview.png
 * Auto scroll
 * Input fixed bottom
 * Bubble animasi dengan `<TransitionGroup>`
-
----
-
-## 📣 Deskripsi Singkat
-
-**Rinku Chat adalah aplikasi chat AI berbasis Vue dengan tampilan lembut bernuansa hijau pastel. Terhubung ke backend Subaru Awa untuk login dan percakapan real-time, dilengkapi avatar karakter, bubble chat melengkung, dan animasi typing yang membuat percakapan terasa hidup dan personal.**
-
----
-
-## 📄 Lisensi
-
-Apache

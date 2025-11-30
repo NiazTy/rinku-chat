@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen chat-bg flex flex-col">
-    <div class="flex-1 flex flex-col max-w-5xl w-full mx-auto px-4 md:px-10">
+    <div class="flex-1 flex flex-col max-w-xl w-full mx-auto px-4 md:px-10">
       <div
         v-if="!token"
         class="fixed inset-0 z-30 flex items-center justify-center bg-black/40"
@@ -112,7 +112,6 @@ const messages = ref([])
 const newMessage = ref('')
 const isSending = ref(false)
 
-// ======== STATE LOGIN & API ========
 const username = ref('')
 const password = ref('')
 const loginError = ref('')

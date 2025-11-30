@@ -10,6 +10,7 @@
           v-for="message in messages"
           :key="message.id"
         >
+          <!-- Pesan dari Kamu -->
           <div
             v-if="message.sender === 'Kamu'"
             class="flex flex-col items-start"
@@ -27,14 +28,19 @@
               {{ message.text }}
             </div>
           </div>
+
+          <!-- Pesan dari Diana (termasuk typing indicator) -->
           <div
             v-else
             class="flex items-end gap-3 justify-end"
           >
+            <!-- Bubble + label -->
             <div class="flex flex-col items-end">
               <span class="text-xs font-semibold mb-1">
                 {{ message.sender }}
               </span>
+
+              <!-- Typing indicator -->
               <div
                 v-if="message.type === 'typing'"
                 class="px-4 py-2 text-sm shadow-md bg-slate-900 text-white
@@ -44,19 +50,15 @@
                 <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-pulse-slow delay-150"></span>
                 <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-pulse-slow delay-300"></span>
               </div>
-
               <div
                 v-else
-                class="px-6 py-3 text-sm leading-relaxed shadow-md
-                       max-w-[650px]
-                       rounded-full md:rounded-[28px]
-                       bg-slate-900 text-white"
-              >
-                {{ message.text }}
-              </div>
+                class="px-6 py-3 text-sm leading-relaxed shadow-md rounded-full md:rounded-[28px]
+                       bg-slate-900 text-white prose prose-sm max-w-none"
+                v-html="renderMarkdown(message.text)"
+              ></div>
             </div>
             <img
-              :src="rinkuAvatar"
+              :src="dianaAvatar"
               alt="Rinku"
               class="w-10 h-10 md:w-11 md:h-11 rounded-full shadow-md object-cover"
             />
@@ -71,6 +73,7 @@
 
 <script setup>
 import { ref, watch, nextTick, defineProps, onMounted } from 'vue'
+import { marked } from 'marked'
 
 const props = defineProps({
   messages: {
@@ -79,7 +82,16 @@ const props = defineProps({
   }
 })
 
-const rinkuAvatar = new URL('../../public/aimoto-rinku.png', import.meta.url).href
+const dianaAvatar = new URL('../assets/img/aimoto-rinku/aimoto-rinku.png', import.meta.url).href
+
+marked.setOptions({
+  breaks: true
+})
+
+function renderMarkdown(text) {
+  if (!text) return ''
+  return marked.parse(text)
+}
 
 const bottomRef = ref(null)
 
