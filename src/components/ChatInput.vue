@@ -1,31 +1,26 @@
 <template>
-  <footer
-    class="fixed left-1/2 -translate-x-1/2 bottom-4 w-full px-4 md:px-10 pointer-events-none z-20"
-  >
+  <footer class="fixed left-1/2 -translate-x-1/2 bottom-4 w-full px-4 md:px-6 pointer-events-none z-40">
     <div class="max-w-xl mx-auto pointer-events-auto">
-      <div class="relative">
-        <input
-          type="text"
-          :value="modelValue"
-          :disabled="sending"
-          @input="$emit('update:modelValue', $event.target.value)"
-          @keypress="onKeyPress"
-          placeholder="Ketikan pesan kamu disini"
-          class="w-full px-8 pr-16 py-4 rounded-full bg-emerald-300/70 border border-emerald-300/80
-                 placeholder-white/80 text-white text-sm md:text-base font-medium
-                 shadow-md outline-none focus:ring-2 focus:ring-emerald-500/70
-                 disabled:opacity-70 disabled:cursor-not-allowed"
-        />
+      <div class="rounded-3xl bg-white/85 backdrop-blur-xl shadow-[0_18px_40px_rgba(15,118,110,0.28)] border border-emerald-100/80 px-3 py-2">
+        <div class="relative flex items-center gap-2">
+          <input
+            type="text"
+            :value="modelValue"
+            :disabled="sending"
+            @input="$emit('update:modelValue', $event.target.value)"
+            @keypress="onKeyPress"
+            placeholder="Ketikan pesan kamu di sini..."
+            class="w-full bg-transparent border-none outline-none px-4 pr-14 py-2 text-sm md:text-base text-slate-800 placeholder-slate-400 font-medium"
+          />
 
-        <button
-          @click="emitSend"
-          :disabled="sending"
-          class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center
-                 rounded-full bg-emerald-400 shadow-md hover:bg-emerald-500 active:scale-95
-                 transition-transform disabled:opacity-70 disabled:cursor-not-allowed"
-        >
-          <Send class="w-4 h-4 text-white" />
-        </button>
+          <button
+            @click="emitSend"
+            :disabled="sending"
+            class="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-emerald-500 shadow-md hover:bg-emerald-600 active:scale-95 transition-transform disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            <Send class="w-4 h-4 text-white" />
+          </button>
+        </div>
       </div>
     </div>
   </footer>

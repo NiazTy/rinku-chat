@@ -1,102 +1,66 @@
 <template>
   <div class="min-h-screen chat-bg flex flex-col">
-    <div class="flex-1 flex flex-col max-w-xl w-full mx-auto px-4 md:px-10">
-      <div
-        v-if="!token"
-        class="fixed inset-0 z-30 flex items-center justify-center bg-black/40"
-      >
-        <div
-          class="w-full max-w-md bg-white/95 rounded-3xl shadow-2xl p-6 space-y-5"
-        >
-          <div class="space-y-1 text-center">
-            <p class="text-xs font-semibold uppercase text-emerald-700 tracking-wide">
-              Rinku Chat · Sign In
-            </p>
-            <h2 class="text-xl font-bold text-slate-900">
-              Masuk dulu, baru curhat ✨
-            </h2>
-            <p class="text-xs text-slate-500">
-              Gunakan akun yang sama dengan backend Subaru Awa-mu.
-            </p>
+    <div class="flex-1 flex flex-col max-w-xl w-full mx-auto px-4 md:px-6 pt-6">
+      <!-- MODAL LOGIN -->
+      <div v-if="!token" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/55 backdrop-blur-sm">
+        <div class="w-full max-w-md bg-white/95 rounded-3xl shadow-2xl p-6 space-y-5 border border-emerald-100">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-emerald-100 flex items-center justify-center text-xl">
+              💚
+            </div>
+            <div class="space-y-0.5">
+              <p class="text-[11px] font-semibold uppercase text-emerald-700 tracking-[0.18em]">Rinku Chat · Sign In</p>
+              <h2 class="text-lg font-bold text-slate-900">Masuk dulu, baru curhat ✨</h2>
+            </div>
           </div>
-
+          <p class="text-xs text-slate-500">Gunakan akun yang sama dengan backend Subaru Awa-mu.</p>
           <div class="space-y-3">
             <div class="space-y-1">
               <label class="text-xs font-medium text-slate-700">Username</label>
               <input
                 v-model="username"
                 type="text"
-                class="w-full px-3 py-2 rounded-2xl border text-sm bg-slate-50 focus:bg-white
-                       focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                class="w-full px-3 py-2 rounded-2xl border text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-400"
                 placeholder="Masukkan username"
               />
             </div>
-
             <div class="space-y-1">
               <label class="text-xs font-medium text-slate-700">Password</label>
               <input
                 v-model="password"
                 type="password"
-                class="w-full px-3 py-2 rounded-2xl border text-sm bg-slate-50 focus:bg-white
-                       focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                class="w-full px-3 py-2 rounded-2xl border text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-400"
                 placeholder="••••••••"
               />
             </div>
-
-            <p
-              v-if="loginError"
-              class="text-xs text-red-500 text-center"
-            >
-              ❌ {{ loginError }}
-            </p>
-
+            <p v-if="loginError" class="text-xs text-red-500 text-center">❌ {{ loginError }}</p>
             <button
               @click="handleLogin"
               :disabled="isLoggingIn"
-              class="w-full flex items-center justify-center gap-2 py-2.5 mt-1 rounded-2xl text-sm font-semibold
-                     text-white bg-emerald-500 hover:bg-emerald-600 active:scale-[0.97]
-                     disabled:opacity-70 disabled:cursor-not-allowed"
+              class="w-full flex items-center justify-center gap-2 py-2.5 mt-1 rounded-2xl text-sm font-semibold text-white bg-emerald-500 hover:bg-emerald-600 active:scale-[0.97] disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              <span
-                v-if="isLoggingIn"
-                class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"
-              ></span>
+              <span v-if="isLoggingIn" class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
               <span>{{ isLoggingIn ? 'Loading...' : 'Sign In' }}</span>
             </button>
           </div>
         </div>
       </div>
-
-      <ChatHeader
-        :active-tab="activeTab"
-        @change-tab="activeTab = $event"
-      />
-
+      <ChatHeader :active-tab="activeTab" @change-tab="activeTab = $event" />
       <main class="flex-1 flex flex-col">
-        <ChatMessages
-          v-if="activeTab === 'Chat'"
-          :messages="messages"
-        />
-
-        <section
-          v-else
-          class="flex-1 flex items-center justify-center text-lg font-medium"
-        >
-          <p v-if="activeTab === 'Beranda'">
-            Ini halaman Beranda. Nanti bisa kamu isi apa saja tentang Rinku Chat 💚
-          </p>
-          <p v-else>
-            Di sini kamu bisa menuliskan cerita singkat tentang Rinku ✨
-          </p>
+        <ChatMessages v-if="activeTab === 'Chat'" :messages="messages" />
+        <section v-else class="flex-1 flex items-center justify-center">
+          <div class="bg-white/85 backdrop-blur-xl rounded-3xl shadow-xl border border-emerald-100/80 px-6 py-5 text-sm md:text-base text-slate-800 max-w-lg">
+            <p v-if="activeTab === 'Beranda'" class="leading-relaxed">
+              Selamat datang di <span class="font-semibold text-emerald-700">Rinku Chat</span> 💚<br />
+              Di sini kamu bisa menjadikan Rinku sebagai teman ngobrol, curhat, atau tempat nanya hal-hal ringan seputar hari-harimu.
+            </p>
+            <p v-else class="leading-relaxed">
+              Aimoto Rinku adalah gadis ceria yang penuh semangat, gampang heboh, dan kadang sedikit linglung dengan cara yang menggemaskan. ✨<br />
+            </p>
+          </div>
         </section>
       </main>
-
-      <ChatInput
-        v-if="activeTab === 'Chat'"
-        v-model="newMessage"
-        :sending="isSending"
-        @send="handleSendMessage"
-      />
+      <ChatInput v-if="activeTab === 'Chat'" v-model="newMessage" :sending="isSending" @send="handleSendMessage" />
     </div>
   </div>
 </template>
@@ -250,8 +214,10 @@ async function handleSendMessage() {
 .chat-bg {
   background-color: #e6f7e6;
   background-image:
-    linear-gradient(to right, rgba(15, 118, 110, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 118, 110, 0.08) 1px, transparent 1px);
-  background-size: 40px 40px;
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.25), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.28), transparent 55%),
+    linear-gradient(to right, rgba(15, 118, 110, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 118, 110, 0.06) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
 }
 </style>
