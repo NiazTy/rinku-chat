@@ -83,7 +83,7 @@ const isLoggingIn = ref(false)
 const token = ref(null)
 
 // const API_BASE_URL = 'https://rinku-api.niaz.my.id'
-const API_BASE_URL = 'http://localhost:3000'
+// const API_BASE_URL = 'http://localhost:3000'
 const LOGIN_URL = `${API_BASE_URL}/auth/login`
 const CHAT_URL = `${API_BASE_URL}/rinku/chat`
 
