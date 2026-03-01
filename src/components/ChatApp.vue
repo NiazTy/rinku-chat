@@ -9,8 +9,8 @@
               💚
             </div>
             <div class="space-y-0.5">
-              <p class="text-[11px] font-semibold uppercase text-emerald-700 tracking-[0.18em]">Rinku Chat · Sign In</p>
-              <h2 class="text-lg font-bold text-slate-900">Masuk dulu, baru curhat ✨</h2>
+              <p class="text-[11px] font-semibold uppercase text-emerald-700 tracking-[0.18em]">Not · Sign In</p>
+              <h2 class="text-lg font-bold text-slate-900">Mana Main ✨</h2>
             </div>
           </div>
           <p class="text-xs text-slate-500">Gunakan akun yang sama dengan backend Subaru Awa-mu.</p>
